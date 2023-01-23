@@ -1,35 +1,41 @@
 import { useEffect, useState } from 'react'
 
-export const useFetch = (url: string) => {
-  const [data, setData] = useState(null)
-  const [pending, setPending] = useState(true)
-  const [error, setError] = useState(null)
+export function useFetch(request: RequestInfo, init?: RequestInit) {
+  const [response, setResponse] = useState<null | Response>(null);
+  const [error, setError] = useState<Error | null>();
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    const abortCont = new AbortController()
-    setTimeout(() => {
-      fetch(url, { signal: abortCont.signal })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(
-              `This is an HTTP error: The status is ${res.status}`
-            )
-          }
-          return res.json()
-        })
-        .then((data) => {
-          setData(data)
-          setError(null)
-        })
-        .catch((err) => {
-          setError(err.message)
-          setData(null)
-        })
-        .finally(() => {
-          setPending(false)
-        })
-    }, 500)
-    return () => abortCont.abort()
-  }, [url])
-  return { data, pending, error }
+    const abortController = new AbortController();
+    setIsLoading(true);
+    (async () => {
+      try {
+        const response = await fetch(request, {
+          ...init,
+          signal: abortController.signal,
+        });
+        setResponse(await response?.json());
+        setIsLoading(false);
+      } catch (error) {
+        if (isAbortError(error)) {
+          return;
+        }
+        setError(error as any);
+        setIsLoading(false);
+      }
+    })();
+    return () => {
+      abortController.abort();
+    };
+  }, [init, request]);
+
+  return { response, error, isLoading };
 }
-export default useFetch
+
+// type guards
+function isAbortError(error: any): error is DOMException {
+  if (error && error.name === "AbortError") {
+    return true;
+  }
+  return false;
+}
