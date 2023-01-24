@@ -3,7 +3,9 @@ import { AppContext } from '../App'
 import { BiBook } from 'react-icons/bi'
 import { BsSun, BsMoon } from 'react-icons/bs'
 const Header = () => {
-  const {thema, setThema} =  useContext(AppContext)
+  const {thema, setThema, font,setFont} =  useContext(AppContext)
+ 
+ 
   return (
     <div className='header'>
       <div className='logo'>
@@ -13,7 +15,10 @@ const Header = () => {
         <select
           name=''
           id=''
-          style={thema?{color:'#fff'}:{}}
+         className={thema?'dark':''}
+         value={font}
+         onChange={(e)=>setFont(e.target.value)}
+         
         >
           <option value='Serif'>Serif</option>
           <option value='Sans'>Sans</option>

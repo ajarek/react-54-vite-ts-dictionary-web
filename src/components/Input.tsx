@@ -10,7 +10,7 @@ const Input = ({value, onChange}:Props) => {
   return (
     <div className='input'>
       <input
-        type='search'
+        type='text'
         name=''
         id=''
         value={value}
