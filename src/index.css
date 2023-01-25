@@ -1,24 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
-:root{
-  --white:#f7f2f2;
-  --gray:#808080;
-  --fiolet:#cc55ee;
-  --dark:#060606;
+:root {
+  --white: #f7f2f2;
+  --gray: #808080;
+  --fiolet: #cc55ee;
+  --dark: #060606;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
- 
-  
-}
-
-.App{
+.App {
   max-width: 1440px;
   width: 100%;
   min-height: 100vh;
@@ -30,53 +25,51 @@ body {
   background-color: var(--white);
   padding: 1rem 6rem;
 }
-.dark{
+.dark {
   background-color: var(--dark);
   color: var(--white);
 }
 
-
-.header{
+.header {
   width: 100%;
   height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
-.header .logo{
+.header .logo {
   font-size: 2rem;
   color: var(--gray);
-  margin:0 auto 0 0;
+  margin: 0 auto 0 0;
 }
-.nav,.check{
+.nav,
+.check {
   display: flex;
-  width:50%;
+  width: 50%;
   justify-content: space-evenly;
   align-items: center;
-  
 }
-.nav select{
-  border:none;
+.nav select {
+  border: none;
   outline: none;
-  border-right:1px solid var(--fiolet);
+  border-right: 1px solid var(--fiolet);
   width: 100px;
-  height:6vh;
+  height: 6vh;
   font-size: 1.5rem;
   background-color: transparent;
   appearance: none;
-  background: url('/public/down-arrow.svg')  no-repeat 80% !important; 
+  background: url('/public/down-arrow.svg') no-repeat 80% !important;
   cursor: pointer;
 }
 
-.check .btn button{
+.check .btn button {
   width: 60px;
   height: 25px;
   border-radius: 25px;
-  background-color:var(--dark) ;
+  background-color: var(--dark);
   cursor: pointer;
 }
-.check .btn span{
+.check .btn span {
   display: block;
   width: 20px;
   height: 20px;
@@ -84,7 +77,7 @@ body {
   background-color: var(--white);
   transition: 0.3s ease-in-out;
 }
-.input{
+.input {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -92,35 +85,35 @@ body {
   position: relative;
   padding: 2rem;
 }
-.input input{
+.input input {
   width: 100%;
   height: 40px;
   border: 1px solid var(--gray);
   border-radius: 8px;
   outline: none;
   font-size: 1.5rem;
-  padding:0 1rem;
+  padding: 0 1rem;
 }
-.input .icon{
-position: absolute;
-top: 50%;
-right: 50px;
-transform: translateY(-50%);
-color: var(--fiolet);
+.input .icon {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  color: var(--fiolet);
 }
-.wrapper-play{
+.wrapper-play {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.wrapper-play .word h2{
+.wrapper-play .word h2 {
   font-size: 2.5rem;
   font-weight: 400;
 }
-.wrapper-play .btn-play{
+.wrapper-play .btn-play {
   width: 50px;
-  height:50px;
+  height: 50px;
   font-size: 2rem;
   border-radius: 50%;
   background-color: var(--fiolet);
@@ -129,30 +122,44 @@ color: var(--fiolet);
   justify-content: center;
   cursor: pointer;
 }
-.phonetic{
+.phonetic {
   width: 100%;
   color: var(--fiolet);
   font-size: 1.2rem;
-  margin-bottom:2rem ;
+  margin-bottom: 2rem;
 }
-.partOfSpeech{
+.partOfSpeech {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.partOfSpeech div{
+.partOfSpeech div {
   width: 90%;
- color: var(--fiolet);
+  color: var(--fiolet);
 }
-ul{
+ul {
   width: 100%;
 }
-li{
+li {
   margin-top: 1rem;
 }
-.synonyms{
+.synonyms {
   width: 100%;
   display: flex;
   margin-top: 1rem;
+}
+@media (max-width: 600px) {
+  .App {
+    padding: 1rem 1.5rem;
+  }
+}
+@media (max-width: 420px) {
+  .nav,
+  .check {
+    width: 75%;
+  }
+  .nav select {
+    width: 150px;
+  }
 }
